@@ -1,26 +1,47 @@
 @import "tailwindcss";
+@config "../../tailwind.config.js";
 
+/* Base variables (NJ Bath Light Theme) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FFFFFF;
+  --bg-secondary: #F8FAFC;      /* Soft Cool Gray */
+  --foreground: #0F172A;       /* Deep Slate Blue (Main Text) */
+  --text-muted: #475569;       /* Medium Slate Gray */
+  
+  /* Brand-specific Metal / Chrome Accent Colors */
+  --brand-highlight: #1E3A8A;   /* Deep Classic Blue from logo */
+  --brand-accent: #0284C7;      /* Bright Water Blue */
+  --chrome-metal: #94A3B8;      /* Stainless Steel Chrome Finish */
+  
+  /* Prismoglass Variables */
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: 12px;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Reusable Glassmorphism Component */
+.prismoglass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+}
+
+/* Custom Typography Class Variables */
+@layer components {
+  /* Absolute typography settings in pixels */
+  .text-h1 { font-size: 48px; font-weight: 700; line-height: 56px; letter-spacing: -0.02em; }
+  .text-h2 { font-size: 36px; font-weight: 700; line-height: 44px; letter-spacing: -0.01em; }
+  .text-h3 { font-size: 28px; font-weight: 600; line-height: 36px; }
+  .text-h4 { font-size: 20px; font-weight: 600; line-height: 28px; }
+  .text-body { font-size: 16px; font-weight: 400; line-height: 24px; color: var(--text-muted); }
+  .text-small { font-size: 14px; font-weight: 400; line-height: 20px; }
 }
