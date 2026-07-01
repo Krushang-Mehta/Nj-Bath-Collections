@@ -86,3 +86,42 @@ export const productSeriesList = [
     image: "/khuti.png" 
   },
 ];
+
+export const latestProductList = [
+  {
+    name: "Alpha Series",
+    slug: "alpha-series",
+    slogan: "Performance. Style. Luxury.",
+    image: "/alphalatest.png" 
+  },
+  {
+    name: "Metrix Series",
+    slug: "metrix-series",
+    slogan: "Modern. Clean. Timeless.",
+    image: "/metrixlatest.png" 
+  },
+  {
+    name: "Octra Series",
+    slug: "octra-series",
+    slogan: "Bold Design. Premium Finish.",
+    image: "/octralatest.png" 
+  },
+  {
+    name: "Nexa Series",
+    slug: "nexa-series",
+    slogan: "Next Gen. Next Level.",
+    image: "/nexalatest.png" 
+  },
+  {
+    name: "Pyramid Series",
+    slug: "pyramid-series",
+    slogan: "Elegant Shape. Perfect Utility.",
+    image: "/pyramidlatest.png" 
+  },
+  {
+    name: "Unique Series",
+    slug: "unique-series",
+    slogan: "Different by Design.",
+    image: "/uniquelatest.png" 
+  }
+];

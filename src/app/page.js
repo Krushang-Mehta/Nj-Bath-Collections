@@ -1,6 +1,7 @@
 import AboutSection from "@/components/home/AboutSection";
 import HeroCarousel from "@/components/home/HeroCarousel";
 import OurSeries from "@/components/home/OurSeries";
+import RecentProducts from "@/components/home/RecentProducts";
 
 export default function Home() {
   return (
@@ -13,6 +14,9 @@ export default function Home() {
 
       {/* Our Series Section */}
       <OurSeries />
+
+      {/* Autoplay loop recent products  */}
+      <RecentProducts />
       
     </div>
   );

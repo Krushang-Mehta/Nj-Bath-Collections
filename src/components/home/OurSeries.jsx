@@ -20,40 +20,47 @@ export default function OurSeries() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const curtains = section.querySelectorAll(".series-reveal-curtain");
-    const images = section.querySelectorAll(".series-image");
+    // Target individual card containers
+    const cards = section.querySelectorAll(".series-card");
 
-    gsap.killTweensOf([curtains, images]);
+    cards.forEach((card) => {
+      const curtain = card.querySelector(".series-reveal-curtain");
+      const image = card.querySelector(".series-image");
 
-    gsap.set(curtains, { transformOrigin: "right center", scaleX: 1 });
-    gsap.set(images, { scale: 1.15 });
+      if (!curtain || !image) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 75%",
-        toggleActions: "play none none none",
-      },
+      // Reset individual elements safely
+      gsap.killTweensOf([curtain, image]);
+      gsap.set(curtain, { transformOrigin: "right center", scaleX: 1 });
+      gsap.set(image, { scale: 1.15 });
+
+      // Create a localized timeline for this specific card
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,         // Triggers when the individual card moves into view
+          start: "top 88%",      // Fires when the top of the card hits 88% of the viewport height
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.to(curtain, {
+        scaleX: 0,
+        duration: 0.85,
+        ease: "power3.inOut",
+      }).to(
+        image,
+        {
+          scale: 1,
+          duration: 1.1,
+          ease: "power3.out",
+          clearProps: "scale", // Safely hands control back to Tailwind hover states
+        },
+        "-=0.75" // Smoothly overlap the image zoom shift with the curtain reveal
+      );
     });
 
-    tl.to(curtains, {
-      scaleX: 0,
-      duration: 0.95,
-      stagger: 0.12,
-      ease: "power3.inOut",
-    }).to(
-      images,
-      {
-        scale: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        // FIX: Clear GSAP's inline scale so CSS/Tailwind transitions can work afterwards
-        clearProps: "scale", 
-      },
-      "-=0.95"
-    );
-
     return () => {
+      // Clean up all ScrollTriggers created in this loop cycle
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -95,11 +102,8 @@ export default function OurSeries() {
                 src={series.image}
                 alt={series.name}
                 fill
-                // OPTIMIZATION: Striking a balance between high-res display and fast download
                 quality={70} 
-                // OPTIMIZATION: Helps Next.js calculate exact pixel density targets
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                // FIX: Changed hover:scale-125 to group-hover:scale-125
                 className="series-image object-cover scale-100 group-hover:scale-125 transition-transform duration-700 ease-out z-0"
               />
 
