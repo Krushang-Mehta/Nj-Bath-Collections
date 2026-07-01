@@ -15,7 +15,8 @@ module.exports = {
         brandHighlight: "var(--brand-highlight)",
         brandAccent: "var(--brand-accent)",
         chromeMetal: "var(--chrome-metal)",
-        brandGold: "var(--brand-gold)", // Golden Design Color (Req 5)
+        brandGold: "var(--brand-gold)", 
+        bgCream: "var(--bg-cream)", // Cream Design Token about
         
         // Mapped Component Colors
         navBgScrolled: "var(--nav-bg-scrolled)",

@@ -13,7 +13,8 @@
   --brand-highlight: #1E3A8A;   /* Deep Classic Blue from logo */
   --brand-accent: #0284C7;      /* Bright Water Blue */
   --chrome-metal: #94A3B8;      /* Stainless Steel Chrome Finish */
-  --brand-gold: #C4A46C;        /* Luxury Golden Indent Accent (Req 5) */
+  --brand-gold: #C4A46C;        /* Luxury Golden Indent Accent  */
+  --bg-cream: #f8f6f1;          /* Custom Cream background backdrop  */
 
   /* Prismoglass Variables */
   --glass-bg: rgba(255, 255, 255, 0.45);
