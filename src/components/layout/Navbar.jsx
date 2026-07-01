@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, Menu, X, PhoneCall } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { productSeriesList } from "@/data/data";
@@ -35,17 +36,22 @@ export default function Navbar() {
       
       {/* Floating Capsule Navbar Container */}
       <div
-        className={`w-full rounded-lg border transition-all duration-300 ease-in-out px-6 py-3.5 flex items-center justify-between ${
+        className={`w-full  border transition-all duration-300 ease-in-out px-6 py-3.5 flex items-center justify-between ${
           isScrolled
-            ? "bg-navBgScrolled border-navBorderScrolled text-navTextScrolled shadow-lg shadow-black/[0.03] backdrop-blur-lg"
-            : "bg-navBgTransparent border-navBorderTransparent text-navTextTransparent backdrop-blur-sm"
+            ? "bg-navBgScrolled border-navBorderScrolled text-navTextScrolled shadow-lg shadow-black/[0.03] backdrop-blur-xl rounded-xl"
+            : "bg-navBgTransparent border-navBorderTransparent text-navTextTransparent backdrop-blur-sm rounded-md"
         }`}
       >
         {/* Left Side: Brand Logo Link */}
         <Link href="/" className="flex items-center">
-          <img
+          <Image
             src="/logo.png"
             alt="NJ Bath Collection"
+            // OPTIMIZATION: Explicit layout footprints completely eliminate layout shift (CLS)
+            width={180}
+            height={48}
+            // OPTIMIZATION: The logo is the highest-priority visual asset on initialization
+            priority
             className="h-12 w-auto object-contain"
           />
         </Link>

@@ -1,6 +1,32 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail } from "lucide-react";
 import { FaFacebookF, FaTwitter, FaYoutube, FaLinkedinIn, FaBehance } from "react-icons/fa6";
+
+// DRY Optimizations: Data arrays for link groups
+const productSeries = [
+  "METRIX SERIES", "OCTRA SERIES", "ALPHA SERIES", 
+  "PYRAMID SERIES", "LUNOX SERIES", "NEXA SERIES", 
+  "UNIQUE SERIES", "DREAM SERIES", "METRO SERIES"
+];
+
+const collections = [
+  "CORNER & SELF COLLECTION", "KHUTI COLLECTION"
+];
+
+const quickLinks = [
+  { label: "ABOUT US", href: "/about" },
+  { label: "HOME", href: "/" },
+  { label: "CONTACT US", href: "/contact" }
+];
+
+const socialLinks = [
+  { icon: FaFacebookF, label: "Facebook Link" },
+  { icon: FaTwitter, label: "Twitter Link" },
+  { icon: FaBehance, label: "Behance Link" },
+  { icon: FaYoutube, label: "YouTube Link" },
+  { icon: FaLinkedinIn, label: "LinkedIn Link" }
+];
 
 export default function Footer() {
   return (
@@ -10,10 +36,15 @@ export default function Footer() {
         {/* Horizontal Divider Line with Center Brand Crest */}
         <div className="relative w-full h-[2px] bg-brandGold/30">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-1 rounded-full bg-footerBg border-2 border-brandGold shadow-xl z-20">
-            <img
+            <Image
               src="/logo.png"
               alt="NJ Bath Collection Logo"
-              className="h-20 w-20 rounded-full object-contain bg-footerBg"
+              // OPTIMIZATION: Explicit dimensions matching the exact 80px container constraint
+              width={80}
+              height={80}
+              // OPTIMIZATION: Automatically handled progressive loading only when entering viewport
+              loading="lazy"
+              className="rounded-full object-contain bg-footerBg h-20 w-20"
             />
           </div>
         </div>
@@ -39,9 +70,7 @@ export default function Footer() {
                   <Phone className="w-6 h-6 text-brandAccent group-hover:scale-110 transition-transform" />
                 </Link>
                 <span className="text-small font-medium tracking-wide text-white/90">
-                  <a href="tel:+919662157189">
-                    +91 96621 57189
-                  </a>
+                  <a href="tel:+919662157189">+91 96621 57189</a>
                 </span>
               </div>
 
@@ -60,43 +89,21 @@ export default function Footer() {
 
             </div>
 
-            {/* Social Platform Icon Circles (Simplified Declarative Anchors) */}
+            {/* Social Platform Icon Circles */}
             <div className="flex gap-4 items-center justify-center pt-2">
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-brandHighlight hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent text-white"
-                aria-label="Facebook Link"
-              >
-                <FaFacebookF className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-brandHighlight hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent text-white"
-                aria-label="Twitter Link"
-              >
-                <FaTwitter className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-brandHighlight hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent text-white"
-                aria-label="Behance Link"
-              >
-                <FaBehance className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-brandHighlight hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent text-white"
-                aria-label="YouTube Link"
-              >
-                <FaYoutube className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full bg-white/5 hover:bg-brandHighlight hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent text-white"
-                aria-label="LinkedIn Link"
-              >
-                <FaLinkedinIn className="w-4 h-4" />
-              </a>
+              {socialLinks.map((social, index) => {
+                const IconComponent = social.icon;
+                return (
+                  <a
+                    key={index}
+                    href="#"
+                    className="p-3 rounded-full bg-white/5 hover:bg-brandHighlight hover:text-white transition-all duration-300 border border-white/10 hover:border-transparent text-white"
+                    aria-label={social.label}
+                  >
+                    <IconComponent className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
 
           </div>
@@ -117,7 +124,7 @@ export default function Footer() {
                 <iframe
                   title="Unique Steel Tech Google Maps Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1847.9966390702996!2d70.79226137865648!3d22.12623199265219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395835d7089a9985%3A0xfa80e9cefe967405!2sUNIQUE%20STEEL%20TECH!5e0!3m2!1sen!2sin!4v1666364727920!5m2!1sen!2sin"
-                  className="w-full h-full border-0  opacity-90 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                  className="w-full h-full border-0 opacity-90 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -138,21 +145,20 @@ export default function Footer() {
             
             {/* Row 1: Series List */}
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-small font-bold tracking-wider text-white">
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">METRIX SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">OCTRA SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">ALPHA SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">PYRAMID SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">LUNOX SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">NEXA SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">UNIQUE SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">DREAM SERIES</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">METRO SERIES</a>
+              {productSeries.map((series) => (
+                <a key={series} href="#" className="hover:text-brandGold transition-colors uppercase">
+                  {series}
+                </a>
+              ))}
             </div>
 
             {/* Row 2: Secondary collection lists */}
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-small font-bold tracking-wider text-white">
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">CORNER & SELF COLLECTION</a>
-              <a href="#" className="hover:text-brandGold transition-colors uppercase">KHUTI COLLECTION</a>
+              {collections.map((collection) => (
+                <a key={collection} href="#" className="hover:text-brandGold transition-colors uppercase">
+                  {collection}
+                </a>
+              ))}
             </div>
 
           </div>
@@ -165,11 +171,14 @@ export default function Footer() {
               Quick Links
             </span>
             <div className="flex flex-wrap justify-center items-center gap-4 text-small font-bold text-white uppercase">
-              <a href="/about" className="hover:text-brandGold transition-colors">ABOUT US</a>
-              <span className="text-gray-600">|</span>
-              <a href="/" className="hover:text-brandGold transition-colors">HOME</a>
-              <span className="text-gray-600">|</span>
-              <a href="/contact" className="hover:text-brandGold transition-colors">CONTACT US</a>
+              {quickLinks.map((link, index) => (
+                <div key={link.href} className="flex items-center gap-4">
+                  <a href={link.href} className="hover:text-brandGold transition-colors">
+                    {link.label}
+                  </a>
+                  {index < quickLinks.length - 1 && <span className="text-gray-600">|</span>}
+                </div>
+              ))}
             </div>
           </div>
         </div>
