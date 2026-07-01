@@ -2,6 +2,7 @@ import AboutSection from "@/components/home/AboutSection";
 import HeroCarousel from "@/components/home/HeroCarousel";
 import OurSeries from "@/components/home/OurSeries";
 import RecentProducts from "@/components/home/RecentProducts";
+import ContactSection from "@/components/shared/ContactSection";
 
 export default function Home() {
   return (
@@ -17,6 +18,9 @@ export default function Home() {
 
       {/* Autoplay loop recent products  */}
       <RecentProducts />
+
+      {/* Contact Form */}
+      <ContactSection />
       
     </div>
   );

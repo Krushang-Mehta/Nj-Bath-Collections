@@ -114,7 +114,7 @@ export default function AboutSection() {
 
                         <h2 className="about-text-element text-h2 leading-tight tracking-tight text-foreground font-extrabold">
                             {aboutSection.title}{" "}
-                            <span className="text-brandHighlight">
+                            <span className="text-brandAccent">
                                 {aboutSection.highlightedTitle}
                             </span>
                         </h2> 
