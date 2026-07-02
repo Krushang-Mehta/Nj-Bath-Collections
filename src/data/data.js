@@ -29,7 +29,7 @@ export const productSeriesList = [
       { id: "m2", name: "Metrix Liquid Soap Dispenser", image: "/info.jpg" },
       { id: "m3", name: "Metrix Towel Rail", image: "/info.jpg" },
       { id: "m4", name: "Metrix Double Robe Hook", image: "/info.jpg" },
-    ]
+    ] 
   },
   { 
     name: "Octra Series", 
@@ -41,19 +41,66 @@ export const productSeriesList = [
       { id: "o2", name: "Octra Liquid Soap", image: "/info.jpg" },
       { id: "o3", name: "Octra Tumbler Holder", image: "/info.jpg" },
       { id: "o4", name: "Octra Coat Hook", image: "/info.jpg" },
-    ]
+    ] 
   },
   { 
     name: "Alpha Series", 
     slug: "alpha-series", 
     slogan: "Performance. Style. Luxury.",
     image: "/alpha.png",
-    products: [
+     products: [
       { id: "a1", name: "Alpha Premium Grab Bar", image: "/info.jpg" },
       { id: "a2", name: "Alpha Dual Soap Tray", image: "/info.jpg" },
-    ]
-  }
-  // All other series entries stay identical, just ensure they have a 'products: []' array...
+    ] 
+  },
+  { 
+    name: "Pyramid Series", 
+    slug: "pyramid-series", 
+    slogan: "Elegant Shape. Perfect Utility.",
+    image: "/pyramid.png" 
+  },
+  { 
+    name: "Lunox Series", 
+    slug: "lunox-series", 
+    slogan: "Luxury in every detail.",
+    image: "/lunox.png" 
+  },
+  { 
+    name: "Nexa Series", 
+    slug: "nexa-series", 
+    slogan: "Next Gen. Next Level.",
+    image: "/nexa.png" 
+  },
+  { 
+    name: "Unique Series", 
+    slug: "unique-series", 
+    slogan: "Different by Design.",
+    image: "/unique.png" 
+  },
+  { 
+    name: "Dream Series", 
+    slug: "dream-series", 
+    slogan: "Where Dreams Meet Design.",
+    image: "/dream.png" 
+  },
+  { 
+    name: "Metro Series", 
+    slug: "metro-series", 
+    slogan: "Sleek Geometry. Premium Craft.",
+    image: "/metro.png" 
+  },
+  { 
+    name: "Corner & Self Collection", 
+    slug: "corner-self-collection", 
+    slogan: "Space Saving. Highly Functional.",
+    image: "/corner.png" 
+  },
+  { 
+    name: "Khuti Collection", 
+    slug: "khuti-collection", 
+    slogan: "Precision Fixtures. Highly Durable.",
+    image: "/khuti.png" 
+  },
 ];
 
 export const latestProductList = [
@@ -94,5 +141,3 @@ export const latestProductList = [
     image: "/uniquelatest.png" 
   }
 ];
-
-
